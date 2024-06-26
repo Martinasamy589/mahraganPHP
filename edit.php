@@ -40,7 +40,7 @@ if (!isset($_SESSION['username'])) {
                     echo "<div class='message'>
                 <p>Profile Updated!</p>
                 </div><br>";
-                    echo "<a href='home.php'><button class='btn'>Go Home</button></a>";
+                    echo "<a href='index.php'><button class='btn'>Go Home</button></a>";
                 }
             } else {
 
