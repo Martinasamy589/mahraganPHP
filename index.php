@@ -6,10 +6,6 @@ include("connection.php");
 if (!isset($_SESSION['username'])) {
     header("location:login.php");
 }
-//besho
-
-
-//martina
 ?>
 
 <!DOCTYPE html>
@@ -44,19 +40,14 @@ if (!isset($_SESSION['username'])) {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#home">Home</a>
+                            <a class="nav-link" aria-current="page" href="#home">الرئيسيه</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">القصص</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#services">services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about">about us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#projects">projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">contact</a>
+                            <a class="nav-link" href="#contact">تواصل معنا</a>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
@@ -100,14 +91,14 @@ if (!isset($_SESSION['username'])) {
 
 
     <div class="name">
-        <center>Welcome
+        <center>مرحبا 
             <?php
             // echo $_SESSION['valid'];
             
             echo $_SESSION['username'];
 
             ?>
-            !
+            
         </center>
     </div>
 
@@ -116,14 +107,28 @@ if (!isset($_SESSION['username'])) {
     <section id="home" class="hero-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-12 col-sm-12 text-content">
-                    <h1>the digital service you really want</h1>
-                    <p>We build effective strategies to help you reach customers and prospects across the entire web.
+                <div class="col-lg-4 col-md-12 col-sm-12 text-content" >
+                    <h2>شهداء الكنيسه الحديثه</h2>
+                    <p style="color:black;">
+                      الاستشهاد المسيحي بنتائجه هو برهان عملي على صحة قول السيد المسيح له المجد: "إن لم تقع حبة الحنطة في الأرض وتمت فهي تبقى وحدها. ولكن إن ماتت تأتى بثمر كثير. " (إنجيل يوحنا 12: 24)..
+                     <span id="story"  style="display: none;">وويقول القديس يوستينوس الشهيد: [ها أنت تستطيع أن ترى بوضوح أنه حينما تقطع رؤوسنا ونُصلب، ونلقى للوحوش المفترسة، ونقيد بالسلاسل، ونلقى في النار، وكل أنواع التعذيب، أننا لا نترك إيماننا. بل بقدر ما نعاقب بهذه الضيقات، بقدر ما ينضم مسيحيون أكثر إلى الإيمان باسم يسوع المسيح.</span>
                     </p>
-                    <button class="btn"><a href="#">Estimate Project</a></button>
+                    <button class="btn" id="showStoryButton"><a href="#">اضغط هنا </a></button>
                 </div>
+                <script>
+        document.getElementById('showStoryButton').addEventListener('click', function() {
+            var storyDiv = document.getElementById('story');
+            if (storyDiv.style.display === 'none') {
+                storyDiv.style.display = 'block'; // Show the story
+                this.textContent = 'اخفاء '; // Change button text
+            } else {
+                storyDiv.style.display = 'none'; // Hide the story
+                this.textContent = ' اضغط هنا'; // Change button text
+            }
+        });
+    </script>
                 <div class="col-lg-8 col-md-12 col-sm-12">
-                    <img src="images/hero-image.png" alt="" class="img-fluid">
+                    <img src="images/shohdaa.jpg" alt="شهداء الكنيسه المعاصره" class="img-fluid">
                 </div>
 
             </div>
@@ -137,79 +142,71 @@ if (!isset($_SESSION['username'])) {
 
 
     <!-- project section  -->
+    <?php 
+    $server = "localhost";
+    $username = "root";
+    $password = "";
+    $db = "login";
+    
+    $conn = new mysqli($server, $username, $password, $db);
+    $sql = "SELECT * FROM shohdaa LIMIT 4";
+      $firstR=$sql[0];
+      
+    ?>
+    <?php
+$sql = "SELECT * FROM shohdaa LIMIT 4"; 
+$result = mysqli_query($conn, $sql);
+$projects = array();
+if ($result && mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $projects[] = $row;
+    }
+} else {
+   
+    $projects = array(); 
+}
 
-    <section class="project-section" id="projects">
-        <div class="container">
-            <div class="row text">
-                <div class="col-lg-6 col-md-12">
-                    <h3>our works</h3>
-                    <h1>Our latest project</h1>
-                    <hr>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <p>We build product close to our heart. We make your idea to really and make your dream successful
-                        with awesome experience.</p>
-                </div>
+
+?>
+
+<section class="project-section" id="projects">
+    <div class="container">
+        <div class="row text">
+            <div class="col-lg-6 col-md-12">
+                <h1>شهداء الكنيسه المعاصره</h1>
+                <hr>
             </div>
-            <div class="row project">
-
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="card">
-                        <img src="images/project1.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="text">
-                                <h4 class="card-title">SaaS Website</h4>
-                                <p class="card-text">Development. Jan 19,2022</p>
-                                <button>see project</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="card">
-                        <img src="images/project2.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="text">
-                                <h4 class="card-title">Travel Website</h4>
-                                <p class="card-text">UI/UX Jun 29,2023</p>
-                                <button>see project</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="card">
-                        <img src="images/project3.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="text">
-                                <h4 class="card-title">Travel Website</h4>
-                                <p class="card-text">UI/UX Aug 9,2021</p>
-                                <button>see project</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="card">
-                        <img src="images/project4.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <div class="text">
-                                <h4 class="card-title">SaaS Website</h4>
-                                <p class="card-text">Development. May 25 ,2022</p>
-                                <button>see project</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="col-lg-6 col-md-12">
+                <p>لمزيد من الشهداء عليك بالضغط هنا</p>
+                <a href="totalCards.php">
+                <button class="btn">اضغط هنا</button>
             </div>
-
         </div>
-    </section>
+        <div class="row project">
+            
+            <?php foreach ($projects as $project) : ?>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card">
+                <img src="data:image/jpeg;base64,<?php echo base64_encode($project['img']); ?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="text">
+                            <h4 class="card-title"><?php echo htmlspecialchars($project['name']); ?></h4>
+                            <p class="card-text"><?php echo htmlspecialchars($project['fname']); ?></p>
+                            <a  href="story.php?id=<?php echo $project['id']; ?>"style="display: inline-block ; width: 100%; height: auto;"> 
+                            <button name="read_story">اقرأ القصه</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
 
     <!-- contact section  -->
 
