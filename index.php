@@ -184,23 +184,23 @@ if ($result && mysqli_num_rows($result) > 0) {
         </div>
         <div class="row project">
             
-            <?php foreach ($projects as $project) : ?>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card">
-                <img src="data:image/jpeg;base64,<?php echo base64_encode($project['img']); ?>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <div class="text">
-                            <h4 class="card-title"><?php echo htmlspecialchars($project['name']); ?></h4>
-                            <p class="card-text"><?php echo htmlspecialchars($project['fname']); ?></p>
-                            <a  href="story.php?id=<?php echo $project['id']; ?>"style="display: inline-block ; width: 100%; height: auto;"> 
+        <?php foreach ($projects as $project) : ?>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card">
+                <img src="data:image/jpeg;base64,<?php echo base64_encode($project['img']); ?>" class="card-img-top" alt="..." style="display: inline-block; width: 50%; height: auto;">
+                <div class="card-body">
+                    <div class="text">
+                        <h4 class="card-title"><?php echo htmlspecialchars($project['الاسم']); ?></h4>
+                        <p class="card-text"><?php echo htmlspecialchars($project['اسم اخر للشهيد']); ?></p>
+                        <a href="story.php?id=<?php echo $project['id']; ?>">
                             <button name="read_story">اقرأ القصه</button>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
-            <?php endforeach; ?>
-            
         </div>
+    <?php endforeach; ?>
+</div>
     </div>
 </section>
 
