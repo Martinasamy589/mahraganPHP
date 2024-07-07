@@ -85,7 +85,12 @@
 }
 
 /* hero section  */
-
+.RSinHERO{
+    text-align: right;
+}
+.text-content {
+    text-align: right;
+}
 .hero-section {
     padding: 20px;
     background: #d0d1cc;

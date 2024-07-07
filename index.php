@@ -23,6 +23,7 @@ if (!isset($_SESSION['username'])) {
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
 
     <link rel="stylesheet" href="css/style.css">
+    
 </head>
 
 <body>
@@ -107,7 +108,11 @@ if (!isset($_SESSION['username'])) {
     <section id="home" class="hero-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-12 col-sm-12 text-content" >
+            <div class="col-lg-8 col-md-12 col-sm-12" >
+                    <img src="images/shohdaa.jpg" alt="شهداء الكنيسه المعاصره" class="img-fluid">
+                </div>
+               
+    <div class="col-lg-4 col-md-12 col-sm-12 text-content" class="RSinHERO" style="text-align: right;">
                     <h2>شهداء الكنيسه الحديثه</h2>
                     <p style="color:black;">
                       الاستشهاد المسيحي بنتائجه هو برهان عملي على صحة قول السيد المسيح له المجد: "إن لم تقع حبة الحنطة في الأرض وتمت فهي تبقى وحدها. ولكن إن ماتت تأتى بثمر كثير. " (إنجيل يوحنا 12: 24)..
@@ -115,7 +120,11 @@ if (!isset($_SESSION['username'])) {
                     </p>
                     <button class="btn" id="showStoryButton"><a href="#">اضغط هنا </a></button>
                 </div>
-                <script>
+                
+
+            </div>
+        </div>
+        <script>
         document.getElementById('showStoryButton').addEventListener('click', function() {
             var storyDiv = document.getElementById('story');
             if (storyDiv.style.display === 'none') {
@@ -127,12 +136,6 @@ if (!isset($_SESSION['username'])) {
             }
         });
     </script>
-                <div class="col-lg-8 col-md-12 col-sm-12">
-                    <img src="images/shohdaa.jpg" alt="شهداء الكنيسه المعاصره" class="img-fluid">
-                </div>
-
-            </div>
-        </div>
     </section>
 
     <!-- services section  -->
@@ -169,31 +172,33 @@ if ($result && mysqli_num_rows($result) > 0) {
 
 ?>
 
-<section class="project-section" id="projects">
-    <div class="container">
+<section class="project-section" id="projects"style="text-align:center;">
+<div class="container">
         <div class="row text">
-            <div class="col-lg-6 col-md-12">
+            <div class="col-lg-6 col-md-12 order-lg-2 order-md-1">
                 <h1>شهداء الكنيسه المعاصره</h1>
                 <hr>
             </div>
-            <div class="col-lg-6 col-md-12">
-                <p>لمزيد من الشهداء عليك بالضغط هنا</p>
+            <div class="col-lg-6 col-md-12 order-lg-1 order-md-2"style="text-align:left; padding: 15px;">
+                <p  >لمزيد من الشهداء عليك بالضغط هنا</p>
                 <a href="totalCards.php">
-                <button class="btn">اضغط هنا</button>
+                    <button style="height: 45px; width: 100px; border-radius: 50%; background-color: #fff; border: 0; margin-left: 40px;">اضغط هنا</button>
+                </a>
             </div>
         </div>
+    </div>
         <div class="row project">
             
         <?php foreach ($projects as $project) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12">
             <div class="card">
-                <img src="data:image/jpeg;base64,<?php echo base64_encode($project['img']); ?>" class="card-img-top" alt="..." style="display: inline-block; width: 50%; height: auto;">
+                <img src="data:image/jpeg;base64,<?php echo base64_encode($project['img']); ?>" class="card-img-top,imgCard" alt="..." style="display: inline-block; width: 260px; height: 200px ;border-radius: 20px; box-shadow: 25px 15px 25px rgba(1, 0, 0, 0.3); transition: transform 0.3s ease-in-out;">
                 <div class="card-body">
                     <div class="text">
-                        <h4 class="card-title"><?php echo htmlspecialchars($project['الاسم']); ?></h4>
-                        <p class="card-text"><?php echo htmlspecialchars($project['اسم اخر للشهيد']); ?></p>
+                        <h4 class="card-title"><?php echo htmlspecialchars($project['name']); ?></h4>
+                        <p class="card-text"><?php echo htmlspecialchars($project['fname']); ?></p>
                         <a href="story.php?id=<?php echo $project['id']; ?>">
-                            <button name="read_story">اقرأ القصه</button>
+                            <button name="read_story" >اقرأ القصه</button>
                         </a>
                     </div>
                 </div>
@@ -210,76 +215,72 @@ if ($result && mysqli_num_rows($result) > 0) {
 
     <!-- contact section  -->
 
-    <section class="contact-section" id="contact">
+    <section class="contact-section" id="contact"style="text-align:center;">
         <div class="container">
 
             <div class="row gy-4">
 
-                <h1>contact us</h1>
-                <div class="col-lg-6">
-
-                    <div class="row gy-4">
-                        <div class="col-md-6">
-                            <div class="info-box">
-                                <i class="bi bi-geo-alt"></i>
-                                <h3>Address</h3>
-                                <p>A108 Adam Street,<br>New Delhi, 535022</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="info-box">
-                                <i class="bi bi-telephone"></i>
-                                <h3>Call Us</h3>
-                                <p>+91 9876545672<br>+91 8763456243</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="info-box">
-                                <i class="bi bi-envelope"></i>
-                                <h3>Email Us</h3>
-                                <p>bragspot@gmail.com<br>brag@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="info-box">
-                                <i class="bi bi-clock"></i>
-                                <h3>Open Hours</h3>
-                                <p>Monday - Friday<br>9:00AM - 05:00PM</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
+                <h1>تواصل معنا</h1>
                 <div class="col-lg-6 form">
                     <form action="contact.php" method="post" class="php-email-form">
                         <div class="row gy-4">
 
                             <div class="col-md-6">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                                <input type="text" name="name" class="form-control" placeholder="الاسم" required style="text-align:right;">
                             </div>
 
                             <div class="col-md-6 ">
-                                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                                <input type="email" class="form-control" name="email" placeholder="الايميل" required style="text-align:right;">
                             </div>
 
                             <div class="col-md-12">
-                                <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                                <input type="text" class="form-control" name="subject" placeholder="نوع الشكوي" required style="text-align:right;">
                             </div>
 
                             <div class="col-md-12">
-                                <textarea class="form-control" name="message" rows="5" placeholder="Message"
-                                    required></textarea>
+                                <textarea class="form-control" name="message" rows="5" placeholder="الرساله"
+                                    required style="text-align:right;"></textarea>
                             </div>
 
                             <div class="col-md-12 text-center">
-                                <button name="submit" type="submit">Send Message</button>
+                                <button name="submit" type="submit">ارسال </button>
                             </div>
 
                         </div>
                     </form>
 
                 </div>
+                <div class="col-lg-6">
+
+                    <div class="row gy-4">
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="bi bi-geo-alt"></i>
+                                <h3>العنوان</h3>
+                                <p>A108 Adam Street,<br>New Delhi, 535022</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="bi bi-telephone"></i>
+                                <h3>اتصل بنا</h3>
+                                <p>+91 9876545672<br>+91 8763456243</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style=" margin-left: 160px;">
+                            <div class="info-box">
+                                <i class="bi bi-envelope"></i>
+                                <h3>الايميل</h3>
+                                <p>bragspot@gmail.com<br>brag@gmail.com</p>
+                            </div>
+                        </div>
+                       
+                        </div>
+                    </div>
+
+                </div>
+
+              
 
             </div>
 
@@ -296,11 +297,10 @@ if ($result && mysqli_num_rows($result) > 0) {
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <ul class="d-flex">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">services</a></li>
-                        <li><a href="#">projects</a></li>
-                        <li><a href="#">about us</a></li>
-                        <li><a href="#">contact</a></li>
+                        <li><a href="#home">الرئيسيه</a></li>
+                        <li><a href="#projects">القصص</a></li>
+                        <li><a href="#contact">تواصل معنا</a></li>
+                       
                     </ul>
                 </div>
 
