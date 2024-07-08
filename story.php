@@ -172,7 +172,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <ul class="d-flex">
                         <li><a href="index.php">الرئيسيه</a></li>
-                        <li><a href="index.php#projects">القصص</a></li>
+                        <li><a href="totalCards.php">القصص</a></li>
                         <li><a href="index.php#contact">تواصل معنا</a></li>
                        
                     </ul>
