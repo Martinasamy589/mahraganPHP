@@ -249,13 +249,11 @@ if ($result && mysqli_num_rows($result) > 0) {
                             </div>
 
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <textarea class="form-control" name="tamged" rows="5" placeholder="التمجيد"
                                     required style="text-align:right;"></textarea>
                             </div>
-                            <div class="col-md-6 ">
-                                <input type="email" class="form-control" name="email" placeholder="الايمل" required style="text-align:right;">
-                            </div>
+                         
 
                             <div class="col-md-12 text-center">
                                 <button name="reqStory" type="submit">ارسال </button>
@@ -287,13 +285,10 @@ if ($result && mysqli_num_rows($result) > 0) {
                     <form action="contact.php" method="post" class="php-email-form">
                         <div class="row gy-4">
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input type="text" name="name" class="form-control" placeholder="الاسم" required style="text-align:right;">
                             </div>
 
-                            <div class="col-md-6 ">
-                                <input type="email" class="form-control" name="email" placeholder="الايميل" required style="text-align:right;">
-                            </div>
 
                             <div class="col-md-12">
                                 <input type="text" class="form-control" name="subject" placeholder="نوع الشكوي" required style="text-align:right;">

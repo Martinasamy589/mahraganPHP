@@ -13,12 +13,26 @@
         <div class="form-box box">
 
             <?php
+            session_start();
+
+            if (!isset($_SESSION['email'])) {
+                header("location: login.php");
+                exit();
+            }
+
+            $email = $_SESSION['email'];
+
+            include "connection.php";
+            $conn = new mysqli($server, $username, $password, $db);
+
+            if ($conn->connect_error) {
+                die("فشل الاتصال: " . $conn->connect_error);
+            }
 
             include "connection.php";
 
             if (isset($_POST['submit'])) {
                 $name = $_POST['name'];
-                $email = $_POST['email'];
                 $subject = $_POST['subject'];
                 $message = $_POST['message'];
 
@@ -29,13 +43,13 @@
 
                 if ($data) {
                     echo "<div class='message'>
-                    <p> Message sent successfully ✨ </p>
+                    <p> تم ارسال الشكوي ✨ </p>
                     </div><br>";
 
                     echo "<a href='index.php'><button class='btn'>Go Back</button></a>";
                 } else {
                     echo "<div class='message'>
-                    <p>Message sending fail 😔</p>
+                    <p>حدث خطأ اثناء الارسال  😔</p>
                     </div><br>";
 
                     echo "<a href='index.php'><button class='btn'>Go Back</button></a>";

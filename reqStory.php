@@ -13,6 +13,22 @@
         <div class="form-box box">
 
             <?php
+            session_start();
+
+            if (!isset($_SESSION['email'])) {
+                header("location: login.php");
+                exit();
+            }
+            
+            $email = $_SESSION['email'];
+            
+            include "connection.php";
+            $conn = new mysqli($server, $username, $password, $db);
+            
+            if ($conn->connect_error) {
+                die("فشل الاتصال: " . $conn->connect_error);
+            }
+            
 
             include "connection.php";
 
@@ -23,7 +39,7 @@
                 $mo3gzat = $_POST['mo3gzat'];
                 $tamged = $_POST['tamged'];
                 $story = $_POST['story'];
-                $email = $_POST['email'];
+                $email = $_SESSION['email'];
             
                 $query = "INSERT INTO reqstory (name, fname, img, mo3gzat, tamged, story, email) VALUES (?, ?, ?, ?, ?, ?,?)";
                 $stmt = mysqli_prepare($conn, $query);
@@ -33,13 +49,13 @@
             
                 if ($success) {
                     echo "<div class='message'>
-                    <p> Message sent successfully ✨ </p>
+                    <p>✨ تم ارسال طلبك ✨ </p>
                     </div><br>";
             
                     echo "<a href='index.php'><button class='btn'>Go Back</button></a>";
                 } else {
                     echo "<div class='message'>
-                    <p>Message sending fail 😔</p>
+                    <p>حدث خطأ اثناء الارسال 😔</p>
                     </div><br>";
             
                     echo "<a href='index.php'><button class='btn'>Go Back</button></a>";
