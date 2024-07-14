@@ -47,46 +47,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 </head>
 
 <body>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#home">الرئيسية</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#projects">القصص</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#contact">تواصل معنا</a>
-            </li>
-            <li class="nav-item">
-                <div class="dropdown">
-                    <?php
-                    session_start();
-                    if (isset($_SESSION['id'])) {
-                        $id = $_SESSION['id'];
-                        $query = mysqli_query($conn, "SELECT * FROM users WHERE id = $id");
-                        if ($result = mysqli_fetch_assoc($query)) {
-                            $res_username = htmlspecialchars($result['username']);
-                            $res_id = $result['id'];
-                    ?>
-                    <a class='nav-link dropdown-toggle' href='#' id='dropdownMenuLink' data-bs-toggle='dropdown'
-                        aria-expanded='false'>
-                        <i class='bi bi-person'></i> <?php echo $res_username; ?>
-                    </a>
-                    <ul class="dropdown-menu mt-2 mr-0" aria-labelledby="dropdownMenuLink">
-                        <li>
-                            <a class='dropdown-item' href='edit.php?id=<?php echo $res_id; ?>'>تعديل الملف الشخصي</a>
-                        </li>
-                        <li><a class="dropdown-item" href="logout.php">تسجيل الخروج</a></li>
-                    </ul>
-                    <?php
-                        }
-                    }
-                    ?>
-                </div>
-            </li>
-        </ul>
-    </div>
+    
 
     <section class="project-section" id="projects">
         <div class="container">

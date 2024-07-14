@@ -18,6 +18,29 @@
     <meta charset="UTF-8">
     <title>View Data from Database</title>
     <style>
+        body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+    background-color: #2B547E; 
+}
+        footer {
+    background-color: #204060;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* تحسين التباعد داخل container في الفوتر */
+footer .container {
+    padding-top: 10px; /* تباعد أعلى داخل الـ container */
+    padding-bottom: 10px; /* تباعد أسفل داخل الـ container */
+}
+
     table.paleBlueRows {
         font-family: Arial, Helvetica, sans-serif;
         border: 1px solid #1C6EA4;

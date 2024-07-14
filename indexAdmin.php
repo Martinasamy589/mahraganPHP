@@ -41,7 +41,7 @@ if (!isset($_SESSION['username'])) {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="reqStatus.php" >حاله طلبك</a>
+                            <a class="nav-link" aria-current="page" href="4akawi.php">الشكاوي</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#home">الرئيسيه</a>
@@ -102,7 +102,7 @@ if (!isset($_SESSION['username'])) {
             echo $_SESSION['username'];
 
             ?>
-            
+            adminnnnnnnn
         </center>
     </div>
 
@@ -193,25 +193,44 @@ if ($result && mysqli_num_rows($result) > 0) {
         <div class="row project">
             
         <?php foreach ($projects as $project) : ?>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="card">
-                <img src="data:image/jpeg;base64,<?php echo base64_encode($project['img']); ?>" class="card-img-top,imgCard" alt="..." style="display: inline-block; width: 260px; height: 200px ;border-radius: 20px; box-shadow: 25px 15px 25px rgba(1, 0, 0, 0.3); transition: transform 0.3s ease-in-out;">
-                <div class="card-body">
-                    <div class="text">
-                        <h4 class="card-title"><?php echo htmlspecialchars($project['name']); ?></h4>
-                        <p class="card-text"><?php echo htmlspecialchars($project['fname']); ?></p>
-                        <a href="story.php?id=<?php echo $project['id']; ?>">
-                            <button name="read_story" >اقرأ القصه</button>
-                        </a>
-                    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card">
+            <?php
+            // Check if $project['img'] contains data
+            if (!empty($project['img'])) {
+                // Encode image data to base64
+                $base64img = base64_encode($project['img']);
+                // Output image with base64 encoded data
+                echo '<img src="data:image/jpeg;base64,' . $base64img . '" class="card-img-top imgCard" alt="..." style="display: inline-block; width: 220px; height: 120px; border-radius: 20px; box-shadow: 25px 15px 25px rgba(1, 0, 0, 0.3); transition: transform 0.3s ease-in-out;">';
+            } else {
+                // Output a placeholder or default image if $project['img'] is empty
+                echo '<img src="path/to/placeholder.jpg" class="card-img-top imgCard" alt="Placeholder Image">';
+            }
+            ?>
+            <div class="card-body">
+                <div class="text">
+                    <h4 class="card-title"><?php echo htmlspecialchars($project['name']); ?></h4>
+                    <p class="card-text"><?php echo htmlspecialchars($project['fname']); ?></p>
+                    <a href="story.php?id=<?php echo $project['id']; ?>">
+                        <button name="read_story">اقرأ القصه</button>
+                    </a>
+                    <a href="edit_story.php?id=<?php echo $project['id']; ?>">
+                        <button name="edit_story">تعديل القصه</button>
+                    </a>
+                    <form action="delete_story.php" method="post">
+                        <input type="hidden" name="id" value="<?php echo $project['id']; ?>">
+                        <button type="submit" name="delete_story">حذف القصة</button>
+                    </form>
                 </div>
             </div>
         </div>
-    <?php endforeach; ?>
+    </div>
+<?php endforeach; ?>
+
+
 </div>
     </div>
 </section>
-
 
 
 <!-- contact section  -->
@@ -221,9 +240,9 @@ if ($result && mysqli_num_rows($result) > 0) {
 
             <div class="row gy-4">
 
-                <h1>طلب اضافه شهيد</h1>
+                <h1> اضافه شهيد</h1>
                 <div >
-                    <form action="reqStory.php" method="post" class="php-email-form">
+                    <form action="add_story.php" method="post" class="php-email-form">
                         <div class="row gy-4">
 
                             <div class="col-md-6">
@@ -253,10 +272,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                                 <textarea class="form-control" name="tamged" rows="5" placeholder="التمجيد"
                                     required style="text-align:right;"></textarea>
                             </div>
-                            <div class="col-md-6 ">
-                                <input type="email" class="form-control" name="email" placeholder="الايمل" required style="text-align:right;">
-                            </div>
-
+                           
                             <div class="col-md-12 text-center">
                                 <button name="reqStory" type="submit">ارسال </button>
                             </div>
@@ -275,79 +291,71 @@ if ($result && mysqli_num_rows($result) > 0) {
         </div>
     </section>
 
-    <!-- contact section  -->
+<!-- reqest -->
 
-    <section class="contact-section" id="contact"style="text-align:center;">
-        <div class="container">
 
-            <div class="row gy-4">
 
-                <h1>تواصل معنا</h1>
-                <div class="col-lg-6 form">
-                    <form action="contact.php" method="post" class="php-email-form">
-                        <div class="row gy-4">
 
-                            <div class="col-md-6">
-                                <input type="text" name="name" class="form-control" placeholder="الاسم" required style="text-align:right;">
-                            </div>
+<?php
+$conn = new mysqli($server, $username, $password, $db);
+$sql = "SELECT * FROM reqstory WHERE status = 'pending'";
+ $firstR=$sql[0];
+      
+$sql = "SELECT * FROM reqstory WHERE status = 'pending' LIMIT 4"; 
+$result = mysqli_query($conn, $sql);
+$requests = array();
+if ($result && mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $requests[] = $row;
+    }
+} else {
+   
+    $requests = array(); 
+}
 
-                            <div class="col-md-6 ">
-                                <input type="email" class="form-control" name="email" placeholder="الايميل" required style="text-align:right;">
-                            </div>
 
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" name="subject" placeholder="نوع الشكوي" required style="text-align:right;">
-                            </div>
+?>
 
-                            <div class="col-md-12">
-                                <textarea class="form-control" name="message" rows="5" placeholder="الرساله"
-                                    required style="text-align:right;"></textarea>
-                            </div>
-
-                            <div class="col-md-12 text-center">
-                                <button name="submit" type="submit">ارسال </button>
-                            </div>
-
-                        </div>
-                    </form>
-
-                </div>
-                <div class="col-lg-6">
-
-                    <div class="row gy-4">
-                        <div class="col-md-6">
-                            <div class="info-box">
-                                <i class="bi bi-geo-alt"></i>
-                                <h3>العنوان</h3>
-                                <p>A108 Adam Street,<br>New Delhi, 535022</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="info-box">
-                                <i class="bi bi-telephone"></i>
-                                <h3>اتصل بنا</h3>
-                                <p>+91 9876545672<br>+91 8763456243</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6" style=" margin-left: 160px;">
-                            <div class="info-box">
-                                <i class="bi bi-envelope"></i>
-                                <h3>الايميل</h3>
-                                <p>bragspot@gmail.com<br>brag@gmail.com</p>
-                            </div>
-                        </div>
-                       
-                        </div>
-                    </div>
-
-                </div>
-
-              
-
+<section class="project-section" id="projects"style="text-align:center;">
+<div class="container">
+        <div class="row text">
+            <div class="col-lg-6 col-md-12 order-lg-2 order-md-1">
+                <h1>الطلبات المحوله من المستخدمين</h1>
+                <hr>
             </div>
-
+            <div class="col-lg-6 col-md-12 order-lg-1 order-md-2"style="text-align:left; padding: 15px;">
+                <p >لمزيد من طلبات الشهداء عليك بالضغط هنا</p>
+                <a href="totalReq.php">
+                    <button style="height: 45px; width: 100px; border-radius: 50%; background-color: #fff; border: 0; margin-left: 40px;">اضغط هنا</button>
+                </a>
+            </div>
         </div>
-    </section>
+    </div>
+        <div class="row project">
+            
+        <?php foreach ($requests as $request) : ?>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card">
+                <img src="data:image/jpeg;base64,<?php echo base64_encode($request['img']); ?>" class="card-img-top,imgCard" alt="..." style="display: inline-block; width: 260px; height: 200px ;border-radius: 20px; box-shadow: 25px 15px 25px rgba(1, 0, 0, 0.3); transition: transform 0.3s ease-in-out;">
+                <div class="card-body">
+                    <div class="text">
+                        <h4 class="card-title"><?php echo htmlspecialchars($request['name']); ?></h4>
+                        <p class="card-text"><?php echo htmlspecialchars($request['fname']); ?></p>
+                        <a href="vstoryReq.php?id=<?php echo $request['id']; ?>">
+                            <button name="read_request" >اقرأ القصه</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div> 
+    </div>
+</section>
+
+
+
+   
 
     <!-- footer section  -->
 
