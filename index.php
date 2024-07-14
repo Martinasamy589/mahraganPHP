@@ -223,7 +223,8 @@ if ($result && mysqli_num_rows($result) > 0) {
 
                 <h1>طلب اضافه شهيد</h1>
                 <div >
-                    <form action="reqStory.php" method="post" class="php-email-form">
+                    <form action="reqStory.php" method="post" enctype="multipart/form-data" class="php-email-form">
+
                         <div class="row gy-4">
 
                             <div class="col-md-6">

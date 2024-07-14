@@ -242,43 +242,31 @@ if ($result && mysqli_num_rows($result) > 0) {
 
                 <h1> اضافه شهيد</h1>
                 <div >
-                    <form action="add_story.php" method="post" class="php-email-form">
-                        <div class="row gy-4">
-
-                            <div class="col-md-6">
-                                <input type="text" name="fname" class="form-control" placeholder="اسم اخر للشهيد" required style="text-align:right;">
-                            </div>
-
-                            <div class="col-md-6 ">
-                                <input type="text" class="form-control" name="name" placeholder="الاسم" required style="text-align:right;">
-                            </div>
-
-                            <div class="col-md-12">
-                                <input type="file" class="form-control" name="img" placeholder="الصوره "  style="text-align:right;">
-                            </div>
-
-                            <div class="col-md-6">
-                                <textarea class="form-control" name="mo3gzat" rows="5" placeholder="المعجزات"
-                                    required style="text-align:right;"></textarea>
-                            </div>
-
-                            <div class="col-md-6">
-                                <textarea class="form-control" name="story" rows="5" placeholder="القصه"
-                                    required style="text-align:right;"></textarea>
-                            </div>
-
-
-                            <div class="col-md-6">
-                                <textarea class="form-control" name="tamged" rows="5" placeholder="التمجيد"
-                                    required style="text-align:right;"></textarea>
-                            </div>
-                           
-                            <div class="col-md-12 text-center">
-                                <button name="reqStory" type="submit">ارسال </button>
-                            </div>
-
-                        </div>
-                    </form>
+                <form action="add_story.php" method="post" enctype="multipart/form-data" class="php-email-form">
+    <div class="row gy-4">
+        <div class="col-md-6">
+            <input type="text" name="fname" class="form-control" placeholder="اسم اخر للشهيد" required style="text-align:right;">
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" name="name" placeholder="الاسم" required style="text-align:right;">
+        </div>
+        <div class="col-md-12">
+            <input type="file" class="form-control" name="img" placeholder="الصوره " required style="text-align:right;">
+        </div>
+        <div class="col-md-6">
+            <textarea class="form-control" name="mo3gzat" rows="5" placeholder="المعجزات" required style="text-align:right;"></textarea>
+        </div>
+        <div class="col-md-6">
+            <textarea class="form-control" name="story" rows="5" placeholder="القصه" required style="text-align:right;"></textarea>
+        </div>
+        <div class="col-md-6">
+            <textarea class="form-control" name="tamged" rows="5" placeholder="التمجيد" required style="text-align:right;"></textarea>
+        </div>
+        <div class="col-md-12 text-center">
+            <button name="reqStory" type="submit">ارسال</button>
+        </div>
+    </div>
+</form>
 
                 </div>
              

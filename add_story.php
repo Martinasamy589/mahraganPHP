@@ -19,36 +19,45 @@
             if (isset($_POST['reqStory'])) {
                 $name = $_POST['name'];
                 $fname = $_POST['fname'];
-                $img = $_POST['img'];
                 $mo3gzat = $_POST['mo3gzat'];
                 $tamged = $_POST['tamged'];
                 $story = $_POST['story'];
-                
-            
-                $query = "INSERT INTO shohdaa (name, fname, img, mo3gzat, tamged, story) VALUES ( ?, ?, ?, ?, ?,?)";
-                $stmt = mysqli_prepare($conn, $query);
-            
-                mysqli_stmt_bind_param($stmt, "ssssss", $name, $fname, $img, $mo3gzat, $tamged, $story);
-                $success = mysqli_stmt_execute($stmt);
-            
-                if ($success) {
-                    echo "<div class='message'>
-                    <p> Message sent successfully ✨ </p>
-                    </div><br>";
-            
-                    echo "<a href='index.php'><button class='btn'>Go Back</button></a>";
+
+                // Handling file upload
+                if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
+                    $imgData = file_get_contents($_FILES['img']['tmp_name']);
                 } else {
-                    echo "<div class='message'>
-                    <p>Message sending fail 😔</p>
-                    </div><br>";
-            
-                    echo "<a href='indexAdmin.php'><button class='btn'>Go Back</button></a>";
+                    $imgData = null;
                 }
-            
-                mysqli_stmt_close($stmt);
+
+                $query = "INSERT INTO shohdaa (name, fname, img, mo3gzat, tamged, story) VALUES (?, ?, ?, ?, ?, ?)";
+                $stmt = mysqli_prepare($conn, $query);
+
+                if ($stmt) {
+                    mysqli_stmt_bind_param($stmt, "ssssss", $name, $fname, $imgData, $mo3gzat, $tamged, $story);
+                    $success = mysqli_stmt_execute($stmt);
+
+                    if ($success) {
+                        echo "<div class='message'>
+                            <p>Message sent successfully ✨</p>
+                            </div><br>";
+
+                        echo "<a href='indexAdmin.php'><button class='btn'>Go Back</button></a>";
+                    } else {
+                        echo "<div class='message'>
+                            <p>Message sending failed 😔</p>
+                            </div><br>";
+
+                        echo "<a href='indexAdmin.php'><button class='btn'>Go Back</button></a>";
+                    }
+
+                    mysqli_stmt_close($stmt);
+                } else {
+                    echo "Error preparing statement: " . mysqli_error($conn);
+                }
+
                 mysqli_close($conn);
             }
-            
             ?>
 
         </div>

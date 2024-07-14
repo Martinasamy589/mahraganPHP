@@ -19,52 +19,58 @@
                 header("location: login.php");
                 exit();
             }
-            
-            $email = $_SESSION['email'];
-            
+
             include "connection.php";
+
             $conn = new mysqli($server, $username, $password, $db);
-            
+
             if ($conn->connect_error) {
                 die("فشل الاتصال: " . $conn->connect_error);
             }
-            
-
-            include "connection.php";
 
             if (isset($_POST['reqStory'])) {
                 $name = $_POST['name'];
                 $fname = $_POST['fname'];
-                $img = $_POST['img'];
                 $mo3gzat = $_POST['mo3gzat'];
                 $tamged = $_POST['tamged'];
                 $story = $_POST['story'];
                 $email = $_SESSION['email'];
-            
-                $query = "INSERT INTO reqstory (name, fname, img, mo3gzat, tamged, story, email) VALUES (?, ?, ?, ?, ?, ?,?)";
-                $stmt = mysqli_prepare($conn, $query);
-            
-                mysqli_stmt_bind_param($stmt, "sssssss", $name, $fname, $img, $mo3gzat, $tamged, $story,$email);
-                $success = mysqli_stmt_execute($stmt);
-            
-                if ($success) {
-                    echo "<div class='message'>
-                    <p>✨ تم ارسال طلبك ✨ </p>
-                    </div><br>";
-            
-                    echo "<a href='index.php'><button class='btn'>Go Back</button></a>";
+
+                // Handling file upload
+                if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
+                    $imgData = file_get_contents($_FILES['img']['tmp_name']);
                 } else {
-                    echo "<div class='message'>
-                    <p>حدث خطأ اثناء الارسال 😔</p>
-                    </div><br>";
-            
-                    echo "<a href='index.php'><button class='btn'>Go Back</button></a>";
+                    $imgData = null;
                 }
-            
-                mysqli_stmt_close($stmt);
-                mysqli_close($conn);
+
+                $query = "INSERT INTO reqstory (name, fname, img, mo3gzat, tamged, story, email) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                $stmt = $conn->prepare($query);
+
+                if ($stmt) {
+                    $stmt->bind_param("sssssss", $name, $fname, $imgData, $mo3gzat, $tamged, $story, $email);
+                    $success = $stmt->execute();
+
+                    if ($success) {
+                        echo "<div class='message'>
+                            <p>✨ تم ارسال طلبك ✨ </p>
+                            </div><br>";
+
+                        echo "<a href='index.php'><button class='btn'>Go Back</button></a>";
+                    } else {
+                        echo "<div class='message'>
+                            <p>حدث خطأ اثناء الارسال 😔</p>
+                            </div><br>";
+
+                        echo "<a href='index.php'><button class='btn'>Go Back</button></a>";
+                    }
+
+                    $stmt->close();
+                } else {
+                    echo "Error preparing statement: " . $conn->error;
+                }
+
+                $conn->close();
             }
-            
             ?>
 
         </div>

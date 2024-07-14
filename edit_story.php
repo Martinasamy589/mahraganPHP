@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
 <body>
     <div class="container">
         <h1 class="text-center">تعديل القصة</h1>
-        <form action="update_story.php" method="post">
+        <form action="update_story.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
             <div class="mb-3">
                 <label for="name" class="form-label">الاسم</label>
@@ -60,7 +60,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
             </div>
             <div class="mb-3">
                 <label for="img" class="form-label">صورة</label>
-                <input type="text" class="form-control" id="img" name="img" value="<?php echo htmlspecialchars($img); ?>" >
+                <input type="file" class="form-control" id="img" name="img">
+                <?php if ($img): ?>
+                    <img src="data:image/jpeg;base64,<?php echo base64_encode($img); ?>" alt="Current Image" style="max-width: 800px;">
+                <?php endif; ?>
             </div>
             <div class="mb-3">
                 <label for="story" class="form-label">القصة</label>
