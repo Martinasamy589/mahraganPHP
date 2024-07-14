@@ -181,23 +181,26 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 <script>
     document.getElementById('acceptButton').addEventListener('click', function() {
         var cardId = <?= $card_id ?>;
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'accept.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onload = function() {
-            if (xhr.status >= 200 && xhr.status < 400) {
-                // Success
-                alert(xhr.responseText);
-                location.reload(); // Reload page after success (you can remove this if not needed)
-            } else {
-                // Error
-                alert('Error: ' + xhr.statusText);
-            }
-        };
-        xhr.onerror = function() {
-            alert('Request failed.');
-        };
-        xhr.send('action=accept&card_id=' + cardId);
+        
+        if (confirm('Are you sure you want to accept this item?')) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'accept.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (xhr.status >= 200 && xhr.status < 400) {
+                    // Success
+                    alert(xhr.responseText);
+                    window.location.href = 'indexAdmin.php'; 
+                } else {
+                    // Error
+                    alert('Error: ' + xhr.statusText);
+                }
+            };
+            xhr.onerror = function() {
+                alert('Request failed.');
+            };
+            xhr.send('action=accept&card_id=' + cardId);
+        }
     });
 
     document.getElementById('rejectButton').addEventListener('click', function() {
@@ -212,7 +215,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 if (xhr.status >= 200 && xhr.status < 400) {
                     // Success
                     alert(xhr.responseText);
-                    location.reload(); // Reload page after success (you can remove this if not needed)
+                    window.location.href = 'indexAdmin.php'; 
                 } else {
                     // Error
                     alert('Error: ' + xhr.statusText);
@@ -225,6 +228,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         }
     });
 </script>
+
 
 <!-- Footer Section -->
 <footer>
