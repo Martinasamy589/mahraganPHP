@@ -33,8 +33,8 @@ if (!isset($_SESSION['username'])) {
     <header class="navbar-section">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><i class="bi bi-chat"></i> Brag Spot</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            <a class="navbar-brand" href="#"><i class="bi bi-arrows-move"></i> شهداء الكنيسة المعاصرة</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -351,7 +351,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-sm-12">
-                    <p class="logo"><i class="bi bi-chat"></i> Brag Spot</p>
+                    <h3 style ="color : #fff;"><i ></i>شهداء الكنيسة المعاصرة</h3>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <ul class="d-flex">
@@ -363,7 +363,6 @@ if ($result && mysqli_num_rows($result) > 0) {
                 </div>
 
                 <div class="col-lg-2 col-md-12 col-sm-12">
-                    <p>&copy;2023_BragSpot</p>
                 </div>
 
                 <div class="col-lg-1 col-md-12 col-sm-12">

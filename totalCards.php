@@ -160,7 +160,7 @@ mysqli_close($conn);
         <div class="container" >
             <div class="row">
                 <div class="col-lg-3 col-md-12 col-sm-12">
-                    <p class="logo"><i class="bi bi-chat"></i> Brag Spot</p>
+                <h3 style ="color : #fff;"><i ></i>شهداء الكنيسة المعاصرة</h3>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12">
                     <ul class="d-flex">
@@ -170,7 +170,6 @@ mysqli_close($conn);
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-12 col-sm-12">
-                    <p>&copy;2023_BragSpot</p>
                 </div>
                 <div class="col-lg-1 col-md-12 col-sm-12">
                     <!-- back to top  -->

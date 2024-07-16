@@ -242,7 +242,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-12 col-sm-12">
-                <p class="logo"><i class="bi bi-chat"></i> Brag Spot</p>
+                <p class="logo"><i ></i>شهداء الكنيسة المعاصرة</p>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <ul class="d-flex">
@@ -252,7 +252,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 </ul>
             </div>
             <div class="col-lg-2 col-md-12 col-sm-12">
-                <p>&copy;2023_BragSpot</p>
             </div>
             <div class="col-lg-1 col-md-12 col-sm-12">
                 <!-- back to top  -->
