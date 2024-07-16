@@ -17,11 +17,10 @@ if ($conn->connect_error) {
 
 $sql = "SELECT * FROM reqstory WHERE email = '$email'";
 $result = $conn->query($sql);
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,31 +30,14 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        
-    /* الأسلوب الحالي للـ footer */
-    footer {
-        background-color: #204060;
-        color: #FFFFFF;
-        text-align: center;
-        padding: 20px 0;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-
-    /* أسلوب إضافي لتحسين التباعد بين العناصر داخل الـ footer */
-    footer .container {
-        padding-top: 10px; /* تباعد أعلى داخل الـ container */
-        padding-bottom: 10px; /* تباعد أسفل داخل الـ container */
-    }
-
-
+        /* Your existing styles */
         body {
             display: flex;
             min-height: 100vh;
             flex-direction: column;
             margin: 0;
             background-color: #2B547E; 
+            color: #FFFFFF;
         }
 
         table.paleBlueRows {
@@ -63,7 +45,6 @@ $result = $conn->query($sql);
             border: 1px solid #1C6EA4;
             background-color: #2B547E; 
             width: 100%;
-            height: 100%;
             text-align: center;
             border-collapse: collapse;
         }
@@ -72,12 +53,10 @@ $result = $conn->query($sql);
         table.paleBlueRows th {
             border: 1px solid #FFFFFF; 
             padding: 8px;
-            color: #FFFFFF; 
         }
 
         table.paleBlueRows tbody td {
             font-size: 13px;
-            color: #FFFFFF; 
             padding: 10px; 
         }
 
@@ -93,7 +72,6 @@ $result = $conn->query($sql);
         table.paleBlueRows thead th {
             font-size: 15px;
             font-weight: bold;
-            color: #FFFFFF; 
             text-align: center;
             border-left: 2px solid #1C6EA4; 
             padding: 10px; 
@@ -106,7 +84,6 @@ $result = $conn->query($sql);
         table.paleBlueRows tfoot {
             font-size: 14px;
             font-weight: bold;
-            color: #FFFFFF; 
             background: #204060; 
             border-top: 3px solid #1C6EA4; 
         }
@@ -116,63 +93,113 @@ $result = $conn->query($sql);
             padding: 20px; 
         }
 
-        /* لون خلفية الحالة "accepted" */
+        /* Status background colors */
         table.paleBlueRows td.accepted {
-           background-color: #4CAF50; /* لون أخضر */
+           background-color: #4CAF50; /* Green */
          }
 
-/* لون خلفية الحالة "rejected" */
         table.paleBlueRows td.rejected {
-          background-color: #FF5733; /* لون أحمر */
+          background-color: #FF5733; /* Red */
         }
 
-/* لون خلفية الحالة "bending" */
         table.paleBlueRows td.pending {
-          background-color: #F9C74F; /* لون أصفر */
-            }
+          background-color: #F9C74F; /* Yellow */
+        }
 
+        /* Footer styles */
+        footer {
+            background-color: #204060;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer .container {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        /* Message box styles */
+        .message-box {
+            background-color: #FFFFFF;
+            color: #000000;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .message-box a {
+            text-decoration: none;
+            color: #FFFFFF;
+            background-color: #204060;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .message-box a:hover {
+            background-color: #1A4060;
+        }
     </style>
 </head>
 <body>
 
-<?php
-if ($result->num_rows > 0) {
-    echo "<table  class='paleBlueRows'>";
-    echo "<tr><th>الحاله</th><th>السبب </th><th>اسم الشهيد </th></tr>";
-    
-    while($row = $result->fetch_assoc()) {
-        // تحديد الفئة CSS بناءً على قيمة الحالة
-        $statusClass = '';
-        switch ($row['status']) {
-            case 'accepted':
-                $statusClass = 'accepted';
-                break;
-            case 'rejected':
-                $statusClass = 'rejected';
-                break;
-            case 'pending':
-                $statusClass = 'pending';
-                break;
-            default:
-                $statusClass = ''; // لا شيء إذا لم تتطابق القيمة مع أي من الحالات السابقة
-                break;
-        }
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <?php
+            if ($result->num_rows > 0) {
+                // Data found, display table
+                echo "<table class='paleBlueRows'>";
+                echo "<thead><tr><th>الحالة</th><th>السبب</th><th>اسم الشهيد</th></tr></thead><tbody>";
+                
+                while($row = $result->fetch_assoc()) {
+                    // Determine CSS class based on status
+                    $statusClass = '';
+                    switch ($row['status']) {
+                        case 'accepted':
+                            $statusClass = 'accepted';
+                            break;
+                        case 'rejected':
+                            $statusClass = 'rejected';
+                            break;
+                        case 'pending':
+                            $statusClass = 'pending';
+                            break;
+                        default:
+                            $statusClass = '';
+                            break;
+                    }
 
-        echo "<tr>";
-        echo "<td class='" . $statusClass . "'>" . htmlspecialchars($row['status']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['reason']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-        echo "</tr>";
-    }
-    
-    echo "</table>";
-} else {
-    echo "لا توجد بيانات لعرضها.";
-}
+                    // Output table rows
+                    echo "<tr>";
+                    echo "<td class='" . $statusClass . "'>" . htmlspecialchars($row['status']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['reason']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                    echo "</tr>";
+                }
+                
+                echo "</tbody></table>";
+            } else {
+                // No data found, show message box with a link to homepage
+                echo "<div class='message-box' style='text-align: center;'>";
+                echo "<p>لا توجد بيانات لعرضها.</p>";
+                echo "<a href='index.php'>العودة إلى الصفحة الرئيسية</a>";
+                echo "</div>";
+            }
 
-$conn->close();
-?>
+            $conn->close();
+            ?>
+        </div>
+    </div>
+</div>
 
+<!-- Bootstrap JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-p2Os/YBc8zVBf8fO+lsckd6z6t4QzUtbIHaGhoB9z4UCtnqK+5hxU+5z2tcuJ3Jk" crossorigin="anonymous"></script>
+
+<!-- Footer -->
 <footer>
     <div class="container">
         <div class="row">
@@ -181,7 +208,7 @@ $conn->close();
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <ul class="d-flex">
-                    <li><a href="index.php">الرئيسيه</a></li>
+                    <li><a href="index.php">الرئيسية</a></li>
                     <li><a href="totalCards.php">القصص</a></li>
                     <li><a href="index.php#contact">تواصل معنا</a></li>
                 </ul>
@@ -190,8 +217,7 @@ $conn->close();
                 <p>&copy;2023_BragSpot</p>
             </div>
             <div class="col-lg-1 col-md-12 col-sm-12">
-                <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-                        class="bi bi-arrow-up-short"></i></a>
+                <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
             </div>
         </div>
     </div>

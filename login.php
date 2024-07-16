@@ -20,7 +20,8 @@ if (isset($_POST['login'])) {
             $_SESSION['username'] = $row['username'];
 // بعد التحقق من صحة كلمة المرور
             $_SESSION['email'] = $email;
-           
+            $_SESSION['isAdmin'] = $row['isAdmin'];
+
 
             if ($row['isAdmin'] == 1) {
                 header("location: indexAdmin.php"); 
@@ -31,23 +32,23 @@ if (isset($_POST['login'])) {
             exit();
         } else {
             echo "<div class='message'>
-                    <p>Wrong Password</p>
+                    <p> الرقم السري غير صحيح</p>
                     </div><br>";
 
             echo "<a href='login.php'><button class='btn'>Go Back</button></a>";
         }
 
     } else {
-        echo "<div class='message'>
-                    <p>Wrong Email or Password</p>
+       echo "<div class='message'>
+                    <p>   الرقم السري او الايميل غير صحيح</p>
                     </div><br>";
 
-        echo "<a href='login.php'><button class='btn'>Go Back</button></a>";
-    }
+                    echo "<div style='text-align: center;'><a href='login.php'><button class='btn btn-go-back'>Go Back</button></a></div>";
+                }
 }
 
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,6 +58,37 @@ if (isset($_POST['login'])) {
     <title>Login</title>
     <link rel="stylesheet" href="css/style1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+.btn {
+    background-color: #4CAF50; /* Green background color */
+    color: white;
+    padding: 8px 16px; /* Padding أصغر لحجم أصغر */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    font-size: 14px; /* حجم الخط داخل الزر */
+    line-height: 1; /* تعديل خط النص ليكون أقرب إلى الزر */
+}
+
+.btn-go-back {
+    font-size: 12px; /* حجم الخط أصغر للزر الصغير */
+    padding: 6px 12px; /* padding أصغر للزر الصغير */
+    margin-top: 10px; /* تباعد بين الرسالة والزر */
+}
+
+.message {
+    background-color: #f44336; /* Red background color */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px; /* Spacing below the message */
+}
+
+
+</style>
+
 </head>
 
 <body>
@@ -68,22 +100,22 @@ if (isset($_POST['login'])) {
                 <div class="form-box">
                     <div class="input-container">
                         <i class="fa fa-envelope icon"></i>
-                        <input class="input-field" type="email" placeholder="Email Address" name="email">
+                        <input class="input-field" type="email" placeholder=" البريد الالكتروني" name="email">
                     </div>
                     <div class="input-container">
                         <i class="fa fa-lock icon"></i>
-                        <input class="input-field password" type="password" placeholder="Password" name="password">
+                        <input class="input-field password" type="password" placeholder="الرقم السري" name="password">
                         <i class="fa fa-eye toggle icon"></i>
                     </div>
                     <div class="remember">
                         <input type="checkbox" class="check" name="remember_me">
-                        <label for="remember">Remember me</label>
-                        <span><a href="forgot.php">Forgot password</a></span>
+                        <label for="remember"> تذكرني</label>
+                        <span ><a href="forgot.php" >عدم تذكر الرقم السري</a></span>
                     </div>
                 </div>
-                <center><input type="submit" name="login" id="submit" value="Login" class="btn"></center>
+                <center><input type="submit" name="login" id="submit" value="sign in " class="btn"></center>
                 <div class="links">
-                    Don't have an account? <a href="signup.php">Signup Now</a>
+                   ليس لديك حساب؟ <a href="signup.php">Signup Now</a>
                 </div>
             </form>
         </div>

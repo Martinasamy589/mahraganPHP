@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
+        
+        body{
+            background-color: #2B547E;  
+        }
         table.paleBlueRows {
             font-family: Arial, Helvetica, sans-serif;
             border: 1px solid #1C6EA4;
@@ -176,8 +180,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 ?>
 <!-- Accept and Reject buttons with AJAX functionality -->
-<button id='acceptButton' class='btn btn-success'>Accept</button>
-<button id='rejectButton' class='btn btn-danger'>Reject</button>
+<div class="d-flex justify-content-center">
+    <button id="acceptButton" class="btn btn-success">Accept</button>
+    <button id="rejectButton" class="btn btn-danger ml-2">Reject</button>
+</div>
+
 <script>
     document.getElementById('acceptButton').addEventListener('click', function() {
         var cardId = <?= $card_id ?>;

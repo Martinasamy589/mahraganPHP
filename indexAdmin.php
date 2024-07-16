@@ -102,7 +102,7 @@ if (!isset($_SESSION['username'])) {
             echo $_SESSION['username'];
 
             ?>
-            adminnnnnnnn
+            
         </center>
     </div>
 
@@ -190,21 +190,23 @@ if ($result && mysqli_num_rows($result) > 0) {
             </div>
         </div>
     </div>
-        <div class="row project">
+        <div class="row project  justify-content-end">
             
         <?php foreach ($projects as $project) : ?>
     <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card">
+        <div class="card" >
             <?php
             // Check if $project['img'] contains data
             if (!empty($project['img'])) {
                 // Encode image data to base64
                 $base64img = base64_encode($project['img']);
                 // Output image with base64 encoded data
-                echo '<img src="data:image/jpeg;base64,' . $base64img . '" class="card-img-top imgCard" alt="..." style="display: inline-block; width: 220px; height: 120px; border-radius: 20px; box-shadow: 25px 15px 25px rgba(1, 0, 0, 0.3); transition: transform 0.3s ease-in-out;">';
-            } else {
+                echo '<div class="text-center">';
+                echo '<img src="data:image/jpeg;base64,' . $base64img . '" class="card-img-top imgCard" alt="..." style="width: 220px; height: 120px; border-radius: 20px; box-shadow: 25px 15px 25px rgba(1, 0, 0, 0.3); transition: transform 0.3s ease-in-out; display: inline-block;">';
+                echo '</div>';
+                        } else {
                 // Output a placeholder or default image if $project['img'] is empty
-                echo '<img src="path/to/placeholder.jpg" class="card-img-top imgCard" alt="Placeholder Image">';
+                echo '<img  style="text-align: center;" src="path/to/placeholder.jpg" class="card-img-top imgCard" alt="Placeholder Image">';
             }
             ?>
             <div class="card-body">
@@ -238,7 +240,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 <section class="contact-section" id=""style="text-align:center;">
         <div class="container">
 
-            <div class="row gy-4">
+            <div class="row gy-4 ">
 
                 <h1> اضافه شهيد</h1>
                 <div >
@@ -259,7 +261,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         <div class="col-md-6">
             <textarea class="form-control" name="story" rows="5" placeholder="القصه" required style="text-align:right;"></textarea>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <textarea class="form-control" name="tamged" rows="5" placeholder="التمجيد" required style="text-align:right;"></textarea>
         </div>
         <div class="col-md-12 text-center">
@@ -306,7 +308,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 
 <section class="project-section" id="projects"style="text-align:center;">
 <div class="container">
-        <div class="row text">
+        <div class="row text ">
             <div class="col-lg-6 col-md-12 order-lg-2 order-md-1">
                 <h1>الطلبات المحوله من المستخدمين</h1>
                 <hr>
@@ -319,7 +321,7 @@ if ($result && mysqli_num_rows($result) > 0) {
             </div>
         </div>
     </div>
-        <div class="row project">
+        <div class="row project justify-content-end">
             
         <?php foreach ($requests as $request) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12">

@@ -190,7 +190,7 @@ if ($result && mysqli_num_rows($result) > 0) {
             </div>
         </div>
     </div>
-        <div class="row project">
+        <div class="row project justify-content-end">
             
         <?php foreach ($projects as $project) : ?>
         <div class="col-lg-3 col-md-6 col-sm-12">

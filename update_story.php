@@ -32,8 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $success = mysqli_stmt_execute($stmt);
 
     if ($success) {
-        echo "<div class='message'><p>تم تحديث القصة بنجاح</p></div><br>";
-        echo "<a href='indexAdmin.php'><button class='btn'>العودة</button></a>";
+        // Redirect to indexAdmin.php upon successful update
+        header("Location: indexAdmin.php");
+        exit(); // Make sure to exit after redirection
     } else {
         echo "<div class='message'><p>فشل في تحديث القصة</p></div><br>";
         echo "<a href='indexAdmin.php'><button class='btn'>العودة</button></a>";

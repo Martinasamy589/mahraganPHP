@@ -72,11 +72,11 @@
       <p>You are register successfully!</p>
       </div><br>";
 
-                  echo "<a href='login.php'><button class='btn'>Login Now</button></a>";
+                  echo "<a href='login.php'><button class='btn'> sign in now</button></a>";
 
                 } else {
                   echo "<div class='message'>
-        <p>This email is used, Try another One Please!</p>
+        <p>   هذا الايميل مستخدم حاول مره اخري</p>
         </div><br>";
 
                   echo "<a href='javascript:self.history.back()'><button class='btn'>Go Back</button></a>";
@@ -84,7 +84,7 @@
 
               } else {
                 echo "<div class='message'>
-      <p>Password does not match.</p>
+      <p>   الرقم السري غير متطابق</p>
       </div><br>";
 
                 echo "<a href='signup.php'><button class='btn'>Go Back</button></a>";
@@ -96,28 +96,28 @@
 
             <div class="input-container">
               <i class="fa fa-user icon"></i>
-              <input class="input-field" type="text" placeholder="Username" name="username" required>
+              <input class="input-field" type="text" placeholder="أسم المستخدم" name="username" required>
             </div>
 
             <div class="input-container">
                <i class="fa fa-envelope icon"></i>
-              <input class="input-field" type="email" placeholder="Email Address" name="email" required>
+              <input class="input-field" type="email" placeholder=" الايميل" name="email" required>
             </div>  
 
             <div class="input-container">
                 <i class="fa fa-volume-control-phone icon"></i>
-              <input class="input-field" type="text" placeholder="phone" name="phone" required>
+              <input class="input-field" type="text" placeholder="رقم التليفون" name="phone" required>
             </div>
 
             <div class="input-container">
               <i class="fa fa-lock icon"></i>
-              <input class="input-field password" type="password" placeholder="Password" name="password" required>
+              <input class="input-field password" type="password" placeholder="الرقم السري" name="password" required>
               <i class="fa fa-eye icon toggle"></i>
             </div>
 
             <div class="input-container">
               <i class="fa fa-lock icon"></i>
-              <input class="input-field" type="password" placeholder="Confirm Password" name="cpass" required>
+              <input class="input-field" type="password" placeholder=" تأكيد الرقم السري" name="cpass" required>
               <i class="fa fa-eye icon"></i>
             </div>
 
@@ -130,7 +130,7 @@
 
 
           <div class="links">
-            Already have an account? <a href="login.php">Signin Now</a>
+          هل لديك بالفعل حساب؟  <a href="login.php"> sign in now</a>
           </div>
 
         </form>
