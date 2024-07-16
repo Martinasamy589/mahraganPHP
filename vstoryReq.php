@@ -189,7 +189,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     document.getElementById('acceptButton').addEventListener('click', function() {
         var cardId = <?= $card_id ?>;
         
-        if (confirm('Are you sure you want to accept this item?')) {
+        if (confirm('هل انت متأكد من اضافة هذه القصة؟')) {
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'accept.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

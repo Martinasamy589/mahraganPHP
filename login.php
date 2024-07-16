@@ -108,9 +108,9 @@ if (isset($_POST['login'])) {
                         <i class="fa fa-eye toggle icon"></i>
                     </div>
                     <div class="remember">
-                        <input type="checkbox" class="check" name="remember_me">
-                        <label for="remember"> تذكرني</label>
-                        <span ><a href="forgot.php" >عدم تذكر الرقم السري</a></span>
+                        <input type="checkbox"style="margin-left: 20px" class="check" name="remember_me">
+                        <label for="remember"style="margin-left: 30px;" > تذكرني</label>
+                        <span style="margin-left: 150px;"><a href="forgot.php" >عدم تذكر الرقم السري</a></span>
                     </div>
                 </div>
                 <center><input type="submit" name="login" id="submit" value="sign in " class="btn"></center>

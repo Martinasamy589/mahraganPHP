@@ -68,12 +68,8 @@
 
                 if ($result) {
 
-                  echo "<div class='message'>
-      <p>You are register successfully!</p>
-      </div><br>";
 
-                  echo "<a href='login.php'><button class='btn'> sign in now</button></a>";
-
+                  header("Location: login.php");
                 } else {
                   echo "<div class='message'>
         <p>   هذا الايميل مستخدم حاول مره اخري</p>

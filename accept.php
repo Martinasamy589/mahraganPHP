@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt_insert->send_long_data(1, $img); // Bind the img data as a blob
 
                 if ($stmt_insert->execute()) {
-                    echo "Card accepted successfully and copied to shohdaa table.";
+                    echo "تم اضافة القصة بنجاح ";
                 } else {
                     echo "Error inserting into shohdaa table: " . $stmt_insert->error;
                 }

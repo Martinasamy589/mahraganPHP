@@ -50,9 +50,7 @@ if (!isset($_SESSION['username'])) {
                         <li class="nav-item">
                             <a class="nav-link" href="#projects">القصص</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">تواصل معنا</a>
-                        </li>
+
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class='nav-link dropdown-toggle' href='edit.php?id=$res_id' id='dropdownMenuLink'

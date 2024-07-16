@@ -39,7 +39,7 @@
 
                     if ($success) {
                         echo "<div class='message'>
-                            <p>Message sent successfully ✨</p>
+                            <p>✨تم اضافة القصة بنجاح ✨</p>
                             </div><br>";
 
                         echo "<a href='indexAdmin.php'><button class='btn'>Go Back</button></a>";
