@@ -84,6 +84,15 @@
         .container {
             padding-bottom: 80px; 
         }
+        footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #204060;
+        color: #FFFFFF;
+        padding: 10px 0;
+        text-align: center;
+    }
     </style>
 </head>
 <body>

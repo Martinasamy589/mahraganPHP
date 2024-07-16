@@ -75,6 +75,15 @@
             font-size: 14px;
             padding: 20px;
         }
+        footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #204060;
+        color: #FFFFFF;
+        padding: 10px 0;
+        text-align: center;
+    }
     </style>
 </head>
 <body>
@@ -126,53 +135,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         echo "</table>";
 
-        // // Accept and Reject buttons with AJAX functionality
-        // echo "<button id='acceptButton' class='btn btn-success'>Accept</button>";
-        // echo "<button id='rejectButton' class='btn btn-danger'>Reject</button>";
-        // echo "<script>
-        //         document.getElementById('acceptButton').addEventListener('click', function() {
-        //             var cardId = " . $card_id . ";
-        //             var xhr = new XMLHttpRequest();
-        //             xhr.open('POST', 'accept.php', true);
-        //             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        //             xhr.onload = function() {
-        //                 if (xhr.status >= 200 && xhr.status < 400) {
-        //                     // Success
-        //                     alert(xhr.responseText);
-        //                     location.reload(); // Reload page after success (you can remove this if not needed)
-        //                 } else {
-        //                     // Error
-        //                     alert('Error: ' + xhr.statusText);
-        //                 }
-        //             };
-        //             xhr.onerror = function() {
-        //                 alert('Request failed.');
-        //             };
-        //             xhr.send('action=accept&card_id=' + cardId);
-        //         });
-
-        //         document.getElementById('rejectButton').addEventListener('click', function() {
-        //             var cardId = " . $card_id . ";
-        //             var xhr = new XMLHttpRequest();
-        //             xhr.open('POST', 'accept.php', true);
-        //             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        //             xhr.onload = function() {
-        //                 if (xhr.status >= 200 && xhr.status < 400) {
-        //                     // Success
-        //                     alert(xhr.responseText);
-        //                     location.reload(); // Reload page after success (you can remove this if not needed)
-        //                 } else {
-        //                     // Error
-        //                     alert('Error: ' + xhr.statusText);
-        //                 }
-        //             };
-        //             xhr.onerror = function() {
-        //                 alert('Request failed.');
-        //             };
-        //             xhr.send('action=reject&card_id=' + cardId);
-        //         });
-        //     </script>";
-
+        
     } else {
         echo "No data found for this ID.";
     }

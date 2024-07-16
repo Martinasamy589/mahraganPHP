@@ -44,6 +44,7 @@ mysqli_close($conn);
         body {
             position: relative;
             min-height: 100vh; /* 100% of the viewport height */
+            background-color: #088F8F;
         }
 
         footer {
