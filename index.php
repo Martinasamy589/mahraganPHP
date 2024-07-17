@@ -315,21 +315,21 @@ if ($result && mysqli_num_rows($result) > 0) {
                             <div class="info-box">
                                 <i class="bi bi-geo-alt"></i>
                                 <h3>العنوان</h3>
-                                <p>A108 Adam Street,<br>New Delhi, 535022</p>
+                                <p>كنيسه الانبا شنوده والانبا كاراس<br>شارع الدكتور</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="info-box">
                                 <i class="bi bi-telephone"></i>
                                 <h3>اتصل بنا</h3>
-                                <p>+91 9876545672<br>+91 8763456243</p>
+                                <p>01210262866</p>
                             </div>
                         </div>
                         <div class="col-md-6" style=" margin-left: 160px;">
                             <div class="info-box">
                                 <i class="bi bi-envelope"></i>
                                 <h3>الايميل</h3>
-                                <p>bragspot@gmail.com<br>brag@gmail.com</p>
+                                <p>martina@gmail.com<br>besho@gmail.com</p>
                             </div>
                         </div>
                        

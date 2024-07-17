@@ -337,6 +337,7 @@ if ($result && mysqli_num_rows($result) > 0) {
             </div>
         </div>
     <?php endforeach; ?>
+    
 </div> 
     </div>
 </section>

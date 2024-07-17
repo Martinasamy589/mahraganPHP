@@ -22,18 +22,25 @@
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    margin: 0;
+  
     background-color: #2B547E; 
+    margin-top:0px ;
+    font-size: 20px;
+
 }
-        footer {
+footer {
     background-color: #204060;
     color: #FFFFFF;
     text-align: center;
-    padding: 20px 0;
-    position: fixed;
-    bottom: 0;
+    padding: 10px 0;
     width: 100%;
+    position: relative; /* استخدم position: relative; بدلاً من position: fixed; */
+    z-index: 1000;
+    clear: both; /* تأكد من تنظيف العناصر المحيطة لتجنب التداخل */
+    margin-top: 20px; /* تعيين هامش أعلى للفوتر للتحكم في المسافة بين الجدول والفوتر */
 }
+
+
 
 /* تحسين التباعد داخل container في الفوتر */
 footer .container {
@@ -97,8 +104,14 @@ footer .container {
 
     table.paleBlueRows tfoot td {
         font-size: 14px;
-        padding: 20px; 
+        padding: 17px; 
     }
+    table.paleBlueRows tbody td {
+    font-size: 20px; /* Increase the font size */
+    color: #FFFFFF; 
+    padding: 10px; 
+}
+
 </style>
 
 </head>
