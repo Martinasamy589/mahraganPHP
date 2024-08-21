@@ -41,7 +41,7 @@ if (!isset($_SESSION['username'])) {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="4akawi.php">الشكاوي</a>
+                            <a class="nav-link" aria-current="page" href="complaints.php">الشكاوي</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#home">الرئيسيه</a>
@@ -50,7 +50,9 @@ if (!isset($_SESSION['username'])) {
                         <li class="nav-item">
                             <a class="nav-link" href="#projects">القصص</a>
                         </li>
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="as2ela.php"> اسئله</a>
+                        </li>
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class='nav-link dropdown-toggle' href='edit.php?id=$res_id' id='dropdownMenuLink'
@@ -254,13 +256,13 @@ if ($result && mysqli_num_rows($result) > 0) {
             <input type="file" class="form-control" name="img" placeholder="الصوره " required style="text-align:right;">
         </div>
         <div class="col-md-6">
-            <textarea class="form-control" name="mo3gzat" rows="5" placeholder="المعجزات" required style="text-align:right;"></textarea>
+            <textarea class="form-control" name="mo3gzat" rows="5" placeholder="المعجزات"  style="text-align:right;"></textarea>
         </div>
         <div class="col-md-6">
             <textarea class="form-control" name="story" rows="5" placeholder="القصه" required style="text-align:right;"></textarea>
         </div>
         <div class="col-md-12">
-            <textarea class="form-control" name="tamged" rows="5" placeholder="التمجيد" required style="text-align:right;"></textarea>
+            <textarea class="form-control" name="tamged" rows="5" placeholder="التمجيد"  style="text-align:right;"></textarea>
         </div>
         <div class="col-md-12 text-center">
             <button name="reqStory" type="submit">ارسال</button>

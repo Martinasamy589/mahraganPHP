@@ -18,7 +18,6 @@ if (isset($_POST['login'])) {
         if ($decrypt) {
             $_SESSION['id'] = $row['id'];
             $_SESSION['username'] = $row['username'];
-// بعد التحقق من صحة كلمة المرور
             $_SESSION['email'] = $email;
             $_SESSION['isAdmin'] = $row['isAdmin'];
 
@@ -60,30 +59,30 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
 .btn {
-    background-color: #4CAF50; /* Green background color */
+    background-color: #4CAF50;
     color: white;
-    padding: 8px 16px; /* Padding أصغر لحجم أصغر */
+    padding: 8px 16px; 
     text-align: center;
     text-decoration: none;
     display: inline-block;
     border: none;
     cursor: pointer;
-    font-size: 14px; /* حجم الخط داخل الزر */
-    line-height: 1; /* تعديل خط النص ليكون أقرب إلى الزر */
+    font-size: 14px; 
+    line-height: 1; 
 }
 
 .btn-go-back {
-    font-size: 12px; /* حجم الخط أصغر للزر الصغير */
-    padding: 6px 12px; /* padding أصغر للزر الصغير */
-    margin-top: 10px; /* تباعد بين الرسالة والزر */
+    font-size: 12px; 
+    padding: 6px 12px; 
+    margin-top: 10px; 
 }
 
 .message {
-    background-color: #f44336; /* Red background color */
+    background-color: #f44336; 
     color: white;
     text-align: center;
     padding: 10px;
-    margin-bottom: 20px; /* Spacing below the message */
+    margin-bottom: 20px; 
 }
 
 

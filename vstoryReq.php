@@ -142,7 +142,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 }
 
 ?>
-<!-- Accept and Reject buttons with AJAX functionality -->
 <div class="d-flex justify-content-center">
     <button id="acceptButton" class="btn btn-success">Accept</button>
     <button id="rejectButton" class="btn btn-danger ml-2">Reject</button>

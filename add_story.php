@@ -22,8 +22,6 @@
                 $mo3gzat = $_POST['mo3gzat'];
                 $tamged = $_POST['tamged'];
                 $story = $_POST['story'];
-
-                // Handling file upload
                 if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
                     $imgData = file_get_contents($_FILES['img']['tmp_name']);
                 } else {

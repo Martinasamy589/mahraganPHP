@@ -2,7 +2,7 @@
 session_start();
 include "connection.php";
 
-$projects = []; // Initialize the array to hold projects
+$projects = []; 
 
 if (isset($_GET['search']) && !empty($_GET['search'])) {
     $search = mysqli_real_escape_string($conn, $_GET['search']);
@@ -18,8 +18,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         $projects[] = $row;
     }
 } else {
-    // No results found
-    $projects = []; // Ensure projects array is empty
+    $projects = []; 
 }
 
 mysqli_close($conn);
@@ -55,7 +54,7 @@ mysqli_close($conn);
             padding: 20px 0;
         }
         .project-section {
-    padding-bottom: 50px; /* زيادة المسافة بين الكاردز والفوتر */
+    padding-bottom: 50px; 
 }
 
     </style>
@@ -157,30 +156,38 @@ mysqli_close($conn);
     </section>
 
     <!-- footer section  -->
-    <footer>
-        <div class="container" >
-            <div class="row">
-                <div class="col-lg-3 col-md-12 col-sm-12">
-                <h3 style ="color : #fff;"><i ></i>شهداء الكنيسة المعاصرة</h3>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                    <ul class="d-flex">
-                        <li><a href="index.php">الرئيسيه</a></li>
-                        <li><a href="index.php#projects">القصص</a></li>
-                        <li><a href="index.php#contact">تواصل معنا</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-12 col-sm-12">
-                </div>
-                <div class="col-lg-1 col-md-12 col-sm-12">
-                    <!-- back to top  -->
-                    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-                            class="bi bi-arrow-up-short"></i></a>
-                </div>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <h3 style="color: #fff;"><i></i>شهداء الكنيسة المعاصرة</h3>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <ul class="d-flex">
+                    <?php
+                    // Check if user is admin or not
+                    if ($_SESSION['isAdmin'] == 1) {
+                        // Admin link
+                        echo '<li><a href="indexAdmin.php">الرئيسيه</a></li>';
+                    } else {
+                        // User link
+                        echo '<li><a href="index.php">الرئيسيه</a></li>';
+                    }
+                    ?>
+                    <li><a href="index.php#projects">القصص</a></li>
+                    <li><a href="index.php#contact">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-12 col-sm-12">
+            </div>
+            <div class="col-lg-1 col-md-12 col-sm-12">
+                <!-- back to top  -->
+                <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+                        class="bi bi-arrow-up-short"></i></a>
             </div>
         </div>
-    </footer>
-
+    </div>
+</footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>

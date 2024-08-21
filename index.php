@@ -54,6 +54,9 @@ if (!isset($_SESSION['username'])) {
                             <a class="nav-link" href="#contact">تواصل معنا</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="as2ela.php"> اسئله</a>
+                        </li>
+                        <li class="nav-item">
                             <div class="dropdown">
                                 <a class='nav-link dropdown-toggle' href='edit.php?id=$res_id' id='dropdownMenuLink'
                                     data-bs-toggle='dropdown' aria-expanded='false'>
@@ -228,7 +231,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                         <div class="row gy-4">
 
                             <div class="col-md-6">
-                                <input type="text" name="fname" class="form-control" placeholder="اسم اخر للشهيد" required style="text-align:right;">
+                                <input type="text" name="fname" class="form-control" placeholder="اسم اخر للشهيد"  style="text-align:right;">
                             </div>
 
                             <div class="col-md-6 ">
@@ -241,7 +244,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 
                             <div class="col-md-6">
                                 <textarea class="form-control" name="mo3gzat" rows="5" placeholder="المعجزات"
-                                    required style="text-align:right;"></textarea>
+                                     style="text-align:right;"></textarea>
                             </div>
 
                             <div class="col-md-6">
@@ -252,7 +255,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 
                             <div class="col-md-12">
                                 <textarea class="form-control" name="tamged" rows="5" placeholder="التمجيد"
-                                    required style="text-align:right;"></textarea>
+                                     style="text-align:right;"></textarea>
                             </div>
                          
 

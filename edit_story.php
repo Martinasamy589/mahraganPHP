@@ -1,13 +1,10 @@
 <?php
 include "connection.php";
-
-// Initialize variables to avoid undefined variable notices
 $id = $name = $fname = $mo3gzat = $tamged = $img = $story = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Fetch existing data from database
     $sql = "SELECT * FROM shohdaa WHERE id = $id";
     $result = mysqli_query($conn, $sql);
 
@@ -25,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
         echo "No record found with ID: $id";
     }
 
-    mysqli_close($conn); // Close database connection
+    mysqli_close($conn); 
 }
 ?>
 
@@ -72,5 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
             <button type="submit" class="btn btn-primary" name="submit">تحديث</button>
         </form>
     </div>
+    
 </body>
+
 </html>

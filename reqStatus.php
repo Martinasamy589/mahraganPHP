@@ -30,7 +30,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Your existing styles */
+      
         body {
             display: flex;
             min-height: 100vh;
@@ -99,14 +99,14 @@ $result = $conn->query($sql);
          }
 
         table.paleBlueRows td.rejected {
-          background-color: #FF5733; /* Red */
+          background-color: #FF5733; 
         }
 
         table.paleBlueRows td.pending {
-          background-color: #F9C74F; /* Yellow */
+          background-color: #F9C74F; 
         }
 
-        /* Footer styles */
+       
         footer {
             background-color: #204060;
             text-align: center;
@@ -121,7 +121,7 @@ $result = $conn->query($sql);
             padding-bottom: 10px;
         }
 
-        /* Message box styles */
+        
         .message-box {
             background-color: #FFFFFF;
             color: #000000;
@@ -151,12 +151,11 @@ $result = $conn->query($sql);
         <div class="col-lg-12">
             <?php
             if ($result->num_rows > 0) {
-                // Data found, display table
+                
                 echo "<table class='paleBlueRows'>";
                 echo "<thead><tr><th>الحالة</th><th>السبب</th><th>اسم الشهيد</th></tr></thead><tbody>";
                 
                 while($row = $result->fetch_assoc()) {
-                    // Determine CSS class based on status
                     $statusClass = '';
                     switch ($row['status']) {
                         case 'accepted':
@@ -173,7 +172,6 @@ $result = $conn->query($sql);
                             break;
                     }
 
-                    // Output table rows
                     echo "<tr>";
                     echo "<td class='" . $statusClass . "'>" . htmlspecialchars($row['status']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['reason']) . "</td>";
@@ -183,7 +181,6 @@ $result = $conn->query($sql);
                 
                 echo "</tbody></table>";
             } else {
-                // No data found, show message box with a link to homepage
                 echo "<div class='message-box' style='text-align: center;'>";
                 echo "<p>لا توجد بيانات لعرضها.</p>";
                 echo "<a href='index.php'>العودة إلى الصفحة الرئيسية</a>";

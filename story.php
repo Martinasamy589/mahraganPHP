@@ -34,18 +34,17 @@ footer {
     text-align: center;
     padding: 10px 0;
     width: 100%;
-    position: relative; /* استخدم position: relative; بدلاً من position: fixed; */
+    position: relative; 
     z-index: 1000;
-    clear: both; /* تأكد من تنظيف العناصر المحيطة لتجنب التداخل */
-    margin-top: 20px; /* تعيين هامش أعلى للفوتر للتحكم في المسافة بين الجدول والفوتر */
+    clear: both; 
+    margin-top: 20px; 
 }
 
 
 
-/* تحسين التباعد داخل container في الفوتر */
 footer .container {
-    padding-top: 10px; /* تباعد أعلى داخل الـ container */
-    padding-bottom: 10px; /* تباعد أسفل داخل الـ container */
+    padding-top: 10px; 
+    padding-bottom: 10px; 
 }
 
     table.paleBlueRows {
@@ -107,7 +106,7 @@ footer .container {
         padding: 17px; 
     }
     table.paleBlueRows tbody td {
-    font-size: 20px; /* Increase the font size */
+    font-size: 20px; 
     color: #FFFFFF; 
     padding: 10px; 
 }
@@ -124,6 +123,9 @@ $password = "";
 $db = "login";
 
 $conn = new mysqli($server, $username, $password, $db);
+
+session_start();
+
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $card_id = intval($_GET['id']);
     $sql = "SELECT * FROM shohdaa WHERE id = $card_id";
@@ -197,39 +199,39 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 
  ?>
- <!-- footer section  -->
-
- <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-12 col-sm-12">
-                    <h3 style ="color : #fff;"><i ></i>شهداء الكنيسة المعاصرة</h3>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                    <ul class="d-flex">
-                        <li><a href="index.php">الرئيسيه</a></li>
-                        <li><a href="totalCards.php">القصص</a></li>
-                        <li><a href="index.php#contact">تواصل معنا</a></li>
-                       
-                    </ul>
-                </div>
-
-                <div class="col-lg-2 col-md-12 col-sm-12">
-                </div>
-
-                <div class="col-lg-1 col-md-12 col-sm-12">
-                    <!-- back to top  -->
-
-                    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-                            class="bi bi-arrow-up-short"></i></a>
-                </div>
-
+<!-- footer section  -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <h3 style="color: #fff;"><i></i>شهداء الكنيسة المعاصرة</h3>
             </div>
-
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <ul class="d-flex">
+                    <?php
+                    
+                    if ($_SESSION['isAdmin'] == 1) {
+                        
+                        echo '<li><a href="indexAdmin.php">الرئيسيه</a></li>';
+                    } else {
+                       
+                        echo '<li><a href="index.php">الرئيسيه</a></li>';
+                    }
+                    ?>
+                    <li><a href="index.php#projects">القصص</a></li>
+                    <li><a href="index.php#contact">تواصل معنا</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-12 col-sm-12">
+            </div>
+            <div class="col-lg-1 col-md-12 col-sm-12">
+                <!-- back to top  -->
+                <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+                        class="bi bi-arrow-up-short"></i></a>
+            </div>
         </div>
-
-    </footer>
-
+    </div>
+</footer>
 
  </body>
 </html>

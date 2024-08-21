@@ -38,7 +38,6 @@
 
 
                 $query = "INSERT INTO contact(name,email,subject,message) VALUES('$name','$email','$subject','$message')";
-
                 $data = mysqli_query($conn, $query);
 
                 if ($data) {
