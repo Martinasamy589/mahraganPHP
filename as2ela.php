@@ -273,7 +273,7 @@
 </div>
 
        
-        <div id="result" style="text-align: center; margin-buttom: 20px;">
+        <div id="result" style="text-align: center; ">
             <button type="button" onclick="showResult()" class="submitButton" style="background-color:#1d5374; color :#f9f9f9;">Show Result</button>
         </div>
     </div>
