@@ -100,7 +100,7 @@ if (!isset($_SESSION['username'])) {
     <div class="name">
         <center>مرحبا 
             <?php
-            // echo $_SESSION['valid'];
+            
             
             echo $_SESSION['username'];
 
@@ -134,11 +134,11 @@ if (!isset($_SESSION['username'])) {
         document.getElementById('showStoryButton').addEventListener('click', function() {
             var storyDiv = document.getElementById('story');
             if (storyDiv.style.display === 'none') {
-                storyDiv.style.display = 'block'; // Show the story
-                this.textContent = 'اخفاء '; // Change button text
+                storyDiv.style.display = 'block';
+                this.textContent = 'اخفاء '; 
             } else {
-                storyDiv.style.display = 'none'; // Hide the story
-                this.textContent = ' اضغط هنا'; // Change button text
+                storyDiv.style.display = 'none'; 
+                this.textContent = ' اضغط هنا'; 
             }
         });
     </script>

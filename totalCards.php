@@ -194,10 +194,8 @@ mysqli_close($conn);
 
     <script>
         function resetSearch() {
-            // Clear the search input
+            
             document.getElementById('search').value = '';
-
-            // Submit the form to reset the search results
             document.querySelector('form').submit();
         }
     </script>

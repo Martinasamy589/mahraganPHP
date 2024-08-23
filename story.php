@@ -198,6 +198,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 
 
+
+
  ?>
 <!-- footer section  -->
 <footer>
